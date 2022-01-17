@@ -7,16 +7,14 @@ import objects.Project;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ui_tests.BaseTest;
+import util.ObjectsData;
 
 public class ProjectTest extends BaseTest {
 
     @Test(description = "Creating project via API")
     public void createProjectTest() {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
-        Project project = Project.builder()
-                .name("Test Project")
-                .build();
-        ResponseBody createdProject = new ProjectAdapter().createProject(project);
+        ResponseBody createdProject = new ProjectAdapter().createProject(ObjectsData.projectData);
         String nameFromApi = createdProject.path("name");
         int idFromApi = createdProject.path("id");
         Assert.assertEquals(nameFromApi, dashboardPage.getLastProjectName());
@@ -25,9 +23,7 @@ public class ProjectTest extends BaseTest {
 
     @Test(description = "Deleting project via API by ID")
     public void deleteProjectByIdTest() {
-        Project project = Project.builder()
-                .name("Test Project")
-                .build();
+        Project project = ObjectsData.projectData;
         int projectId = new ProjectAdapter().createProject(project).path("id");
         new ProjectAdapter().deleteProject(projectId, project);
         //assertion = status code, already in specification. So if test passes = status code asserted
@@ -35,9 +31,7 @@ public class ProjectTest extends BaseTest {
 
     @Test
     public void updateProjectByIdTest() {
-        Project project = Project.builder()
-                .name("Test Project")
-                .build();
+        Project project = ObjectsData.projectData;
         int projectId = new ProjectAdapter().createProject(project).path("id");
         project = Project.builder()
                 .announcement("This is announcement")
@@ -53,4 +47,5 @@ public class ProjectTest extends BaseTest {
         String projectSize = Integer.toString(response.body().path("projects.size"));
         Assert.assertEquals(dashboardPage.getNumberOfProjects(), projectSize);
     }
+
 }
