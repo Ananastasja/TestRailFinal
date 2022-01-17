@@ -14,7 +14,6 @@ public class LoginPage extends BasePage {
     WebElement emailInput;
     @FindBy(id="password")
     WebElement passwordInput;
-    //TODO: стоит ли делать их в папке elements через динамич локатор?
     @FindBy(id = "button_primary")
     WebElement logInBtn;
     @FindBy(xpath = "//*[contains(@class, 'error-text')]")

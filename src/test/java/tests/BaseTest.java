@@ -28,10 +28,13 @@ public class BaseTest implements ITestConstantsUI {
     HeaderPage headerPage;
 
     @BeforeMethod
-    public void initTest() {
+    public void initDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    public void initPage() {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         loginSteps = new LoginSteps(driver);
