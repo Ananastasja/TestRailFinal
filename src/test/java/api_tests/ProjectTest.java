@@ -50,7 +50,7 @@ public class ProjectTest extends BaseTest {
     public void checkNumberOfProductsApiAndUiTest () {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         Response response = new ProjectAdapter().getAllProjects();
-        String size = Integer.toString(response.body().path("projects.size"));
-        Assert.assertEquals(dashboardPage.getNumberOfProjects(), size);
+        String projectSize = Integer.toString(response.body().path("projects.size"));
+        Assert.assertEquals(dashboardPage.getNumberOfProjects(), projectSize);
     }
 }
