@@ -12,9 +12,23 @@ public class DashboardPage extends HeaderPage{
 
     @FindBy(id = "navigation-dashboard")
     WebElement naviDashboard;
+    @FindBy(xpath = "(//div[contains(@class, 'summary')]//a[contains(@href, 'overview')])[1]")
+    WebElement lastCreatedProject;
+    @FindBy(xpath = "(//p[contains(text(), 'active')]/strong)[1]")
+    WebElement numberOfProjects;
 
     public boolean isDashboardVisible() {
         Waiters.waitForElementLocated(driver, naviDashboard, 5);
         return naviDashboard.isDisplayed();
+    }
+
+    public String getLastProjectName() {
+        Waiters.waitForElementLocated(driver, lastCreatedProject, 10);
+        return lastCreatedProject.getText();
+    }
+
+    public String getNumberOfProjects() {
+        Waiters.waitForElementLocated(driver, numberOfProjects, 10);
+        return numberOfProjects.getText();
     }
 }

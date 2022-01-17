@@ -1,4 +1,4 @@
-package tests;
+package ui_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ public class LoginTest extends BaseTest{
 
     @Test(description = "Login using valid creds", groups = {"Smoke", "Regression", "Positive"})
     public void loginWithValidCredsTest() {
-        loginSteps.loginAndClickLoginBtn(System.getProperty("email", PropertyReader.getProperty("email")), System.getProperty("password", PropertyReader.getProperty("password")));
+        loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         Assert.assertTrue(dashboardPage.isDashboardVisible());
     }
 
@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest{
 
     @Test(description = "Log out from Dashboard page", groups = {"Smoke", "Regression", "Positive"})
     public void logOutTest() {
-        loginSteps.logInAndLogOut(System.getProperty("email", PropertyReader.getProperty("email")), System.getProperty("password", PropertyReader.getProperty("password")));
+        loginSteps.logInAndLogOut(EMAIL_UI, PASSWORD_UI);
         Assert.assertEquals(loginPage.getLoginBoxText(), LOGIN_BOX_TEXT);
     }
 }
