@@ -1,10 +1,10 @@
 package pages;
 
-import constants.IBaseConstants;
+import constants.IBaseConstantsUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage implements IBaseConstants {
+public class BasePage implements IBaseConstantsUI {
 
     WebDriver driver;
 

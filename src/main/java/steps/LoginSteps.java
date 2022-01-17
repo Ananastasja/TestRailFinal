@@ -7,9 +7,9 @@ import pages.LoginPage;
 
 public class LoginSteps {
 
-    private LoginPage loginPage;
-    private DashboardPage dashboardPage;
-    private HeaderPage headerPage;
+    public LoginPage loginPage;
+    public DashboardPage dashboardPage;
+    public HeaderPage headerPage;
     WebDriver driver;
 
     public LoginSteps(WebDriver driver) {
