@@ -26,7 +26,6 @@ public class ProjectTest extends BaseTest {
         Project project = ObjectsData.projectData;
         int projectId = new ProjectAdapter().createProject(project).path("id");
         new ProjectAdapter().deleteProject(projectId, project);
-        //assertion = status code, already in specification. So if test passes = status code asserted
     }
 
     @Test(description = "Updating project by ID")

@@ -29,7 +29,6 @@ public class SuiteTest extends BaseTest {
         int suiteId = new SuiteAdapter().addSuite(projectId, suite).path("id");
         ResponseBody response = new SuiteAdapter().deleteSuiteById(suiteId, suite);
         Assert.assertFalse(response.toString().isEmpty());
-        //+assertion of status code via spec
     }
 
     @Test(description = "Partially updating test suite")
