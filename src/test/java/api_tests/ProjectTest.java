@@ -29,7 +29,7 @@ public class ProjectTest extends BaseTest {
         //assertion = status code, already in specification. So if test passes = status code asserted
     }
 
-    @Test
+    @Test(description = "Updating project by ID")
     public void updateProjectByIdTest() {
         Project project = ObjectsData.projectData;
         int projectId = new ProjectAdapter().createProject(project).path("id");
@@ -40,7 +40,7 @@ public class ProjectTest extends BaseTest {
         Assert.assertEquals(announcementFromApi, project.getAnnouncement());
     }
 
-    @Test
+    @Test(description = "Comparing number of projects displayed in UI and those got via API request")
     public void checkNumberOfProductsApiAndUiTest () {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         Response response = new ProjectAdapter().getAllProjects();
