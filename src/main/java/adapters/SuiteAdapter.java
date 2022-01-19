@@ -2,9 +2,9 @@ package adapters;
 
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import objects.Project;
 import objects.Suite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SuiteAdapter extends BaseAdapter{
@@ -21,12 +21,11 @@ public class SuiteAdapter extends BaseAdapter{
         return post(String.format(UPDATE_SUITE_API, suiteId), converter.toJson(suite)).body();
     }
 
-    public List getAllSuitesList(int projectId) {
-        return getAllProjects(String.format(GET_ALL_SUITES_API, projectId));
+    public List<Suite> getAllSuitesList(int projectId) {
+        return new ArrayList<>(get(String.format(GET_ALL_SUITES_API, projectId)).body().jsonPath().getList(".", Suite.class));
     }
 
     public Response getAllSuites(int projectId) {
         return get(String.format(GET_ALL_SUITES_API, projectId));
     }
-
 }

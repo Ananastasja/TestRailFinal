@@ -11,6 +11,7 @@ import util.Specifications;
 
 import java.util.List;
 
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class BaseAdapter implements IBaseConstantsAPI {
@@ -47,16 +48,5 @@ public class BaseAdapter implements IBaseConstantsAPI {
                         .then()
                         .log().all()
                         .extract().response();
-    }
-
-    public List getAllProjects(String url) {
-        Specifications.installSpecRequest(Specifications.requestSpecification(BASE_URL_API), Specifications.responseSpecification200());
-        return given()
-                .auth().preemptive().basic(EMAIL_API, API_KEY)
-                .when()
-                .get(BASE_URL_API + url)
-                .then()
-                .log().all()
-                .extract().body().jsonPath().getList("suites", Suite.class);
     }
 }

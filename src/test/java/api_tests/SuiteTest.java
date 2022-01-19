@@ -48,7 +48,6 @@ public class SuiteTest extends BaseTest {
     public void getAllSuitesTest() {
         List<Suite> suites = new SuiteAdapter().getAllSuitesList(76);
         suites.forEach(x -> Assert.assertTrue(x.getId() > 0));
-        //why it returns NullPointer
     }
 
     @Test
