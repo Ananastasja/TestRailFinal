@@ -10,11 +10,11 @@ public class LoginSteps {
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
     public HeaderPage headerPage;
-    WebDriver driver;
 
     public LoginSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
+        headerPage = new HeaderPage(driver);
     }
 
     public LoginSteps loginAndClickLoginBtn(String email, String password) {

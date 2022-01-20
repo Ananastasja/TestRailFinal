@@ -7,10 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import pages.DashboardPage;
-import pages.HeaderPage;
-import pages.LoginPage;
+import pages.*;
+import steps.EditTestCaseSteps;
 import steps.LoginSteps;
+import steps.TestCaseSteps;
 import util.TestListener;
 
 @Listeners(TestListener.class)
@@ -21,6 +21,14 @@ public class BaseTest implements ITestConstantsUI {
     protected DashboardPage dashboardPage;
     protected LoginSteps loginSteps;
     HeaderPage headerPage;
+    CaseDetailsPage caseDetailsPage;
+    TestCasePage testCasePage;
+    TestCasesListPage testCasesListPage;
+    ConfimationModalPage confimationModalPage;
+    EditTestCasePage editTestCasePage;
+    ReviewChangesPage reviewChangesPage;
+    TestCaseSteps testCaseSteps;
+    EditTestCaseSteps editTestCaseSteps;
 
     @BeforeMethod
     public void initTest() {
@@ -35,6 +43,14 @@ public class BaseTest implements ITestConstantsUI {
         dashboardPage = new DashboardPage(driver);
         loginSteps = new LoginSteps(driver);
         headerPage = new HeaderPage(driver);
+        caseDetailsPage = new CaseDetailsPage(driver);
+        testCasePage = new TestCasePage(driver);
+        testCasesListPage = new TestCasesListPage(driver);
+        confimationModalPage = new ConfimationModalPage(driver);
+        editTestCasePage = new EditTestCasePage(driver);
+        reviewChangesPage = new ReviewChangesPage(driver);
+        testCaseSteps = new TestCaseSteps(driver);
+        editTestCaseSteps = new EditTestCaseSteps(driver);
     }
 
     @AfterMethod(alwaysRun = true)

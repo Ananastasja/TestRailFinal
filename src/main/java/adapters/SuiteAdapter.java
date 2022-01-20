@@ -2,7 +2,7 @@ package adapters;
 
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import objects.Suite;
+import objects.api.Suite;
 
 import java.util.ArrayList;
 import java.util.List;
