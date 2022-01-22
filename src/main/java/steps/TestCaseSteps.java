@@ -51,4 +51,10 @@ public class TestCaseSteps {
                 .clickOnTestCasesLink();
         return this;
     }
+
+    public TestCaseSteps deleteCertainTestCase(int index) {
+        testCasesListPage.chooseCaseCheckboxByIndex(index);
+        testCasesListPage.clickDeleteCaseBtn();
+        return this;
+    }
 }

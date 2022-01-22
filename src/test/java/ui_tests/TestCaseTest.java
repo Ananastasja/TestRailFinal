@@ -65,4 +65,25 @@ public class TestCaseTest extends BaseTest {
         Assert.assertTrue(editTestCasePage.isErrorMessageDisplayed());
         Assert.assertTrue(editTestCasePage.isTitleVisible());
     }
+
+    @Test(description = "Delete test case by index clicking on Mark as Deleted button", groups = {"Smoke", "Positive", "Regression"})
+    public void deleteTest() {
+        testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
+        int testCaseNumberBeforeDelete = testCasesListPage.getTestCasesNumber();
+        testCaseSteps.deleteCertainTestCase(20);
+        confimationModalPage.clickOnMarkAsDeletedBtn();
+        int testCaseNumberAfterDelete = testCasesListPage.getTestCasesNumber();
+        Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
+    }
+
+    @Test(description = "Delete test case by index clicking on Delete permanently button", groups = {"Smoke", "Positive", "Regression"})
+    public void deleteTestPermanentlyTest() {
+        testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
+        int testCaseNumberBeforeDelete = testCasesListPage.getTestCasesNumber();
+        testCaseSteps.deleteCertainTestCase(20);
+        confimationModalPage.clickOnDeletePermanentlyBtn();
+        confimationModalPage.clickOnDeletePermanentlySecondPage();
+        int testCaseNumberAfterDelete = testCasesListPage.getTestCasesNumber();
+        Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
+    }
 }
