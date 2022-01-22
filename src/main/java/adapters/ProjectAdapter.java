@@ -2,7 +2,7 @@ package adapters;
 
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import objects.Project;
+import objects.api.Project;
 
 public class ProjectAdapter extends BaseAdapter {
     public ResponseBody createProject(Project project) {

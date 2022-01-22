@@ -1,4 +1,4 @@
-package objects;
+package objects.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.SerializedName;

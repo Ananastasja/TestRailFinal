@@ -16,6 +16,8 @@ public class DashboardPage extends HeaderPage{
     WebElement lastCreatedProject;
     @FindBy(xpath = "(//p[contains(text(), 'active')]/strong)[1]")
     WebElement numberOfProjects;
+    @FindBy(xpath = "//a[contains(text(), 'Test Cases')]")
+    WebElement testCasesLink;
 
     public boolean isDashboardVisible() {
         Waiters.waitForElementLocated(driver, naviDashboard, 5);
@@ -30,5 +32,10 @@ public class DashboardPage extends HeaderPage{
     public String getNumberOfProjects() {
         Waiters.waitForElementLocated(driver, numberOfProjects, 10);
         return numberOfProjects.getText();
+    }
+
+    public TestCasesListPage clickOnTestCasesLink() {
+        testCasesLink.click();
+        return new TestCasesListPage(driver);
     }
 }

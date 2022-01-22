@@ -2,7 +2,6 @@ package ui_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import util.PropertyReader;
 
 public class LoginTest extends BaseTest{
 
@@ -18,7 +17,7 @@ public class LoginTest extends BaseTest{
         Assert.assertEquals(loginPage.getErrorText(), ERROR_MESSAGE_LOGIN);
     }
 
-    @Test(description = "Log out from Dashboard page", groups = {"Smoke", "Regression", "Positive"})
+    @Test(description = "Login and log out from Dashboard page", groups = {"Smoke", "Regression", "Positive"})
     public void logOutTest() {
         loginSteps.logInAndLogOut(EMAIL_UI, PASSWORD_UI);
         Assert.assertEquals(loginPage.getLoginBoxText(), LOGIN_BOX_TEXT);

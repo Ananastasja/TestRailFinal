@@ -1,4 +1,4 @@
-package objects;
+package objects.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

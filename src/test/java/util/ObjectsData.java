@@ -1,7 +1,7 @@
 package util;
 
-import objects.Project;
-import objects.Suite;
+import objects.api.Project;
+import objects.api.Suite;
 import ui_tests.BaseTest;
 
 public class ObjectsData extends BaseTest {
@@ -14,5 +14,4 @@ public class ObjectsData extends BaseTest {
                 .name("This is test suite name")
                 .description("No info")
                 .build();
-
 }
