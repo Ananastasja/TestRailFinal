@@ -9,7 +9,7 @@ public class ConfimationModalPage extends HeaderPage{
         super(driver);
     }
 
-    @FindBy(xpath = "(//a[contains(text(), 'Mark')])[2]")
+    @FindBy(xpath = "//*[contains(@class, 'ui-dialog-content')]//a[contains(@class,' button-positive dialog')]")
     WebElement markAsDeletedBtn;
 
     public void clickOnMarkAsDeletedBtn() {
