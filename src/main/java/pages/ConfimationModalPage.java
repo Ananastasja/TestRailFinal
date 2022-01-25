@@ -9,10 +9,25 @@ public class ConfimationModalPage extends HeaderPage{
         super(driver);
     }
 
-    @FindBy(xpath = "//*[contains(@class, 'ui-dialog-content')]//a[contains(@class,' button-positive dialog')]")
+    @FindBy(xpath = "//*[contains(@class, 'ui-dialog-content')]//a[contains(@class,'button-positive dialog')]")
     WebElement markAsDeletedBtn;
+    @FindBy(xpath = "//*[contains(@class, 'ui-dialog-content')]//a[contains(@class,'dialog-action-secondary')]")
+    WebElement deletePermanentlyBtn;
+    @FindBy(xpath = "//*[contains(@id, 'casesDeletionConfirmationDialog')]//a[contains(@class,'button-black')]")
+    WebElement deletePermanentlySecondPage;
 
-    public void clickOnMarkAsDeletedBtn() {
+    public TestCasesListPage clickOnMarkAsDeletedBtn() {
         markAsDeletedBtn.click();
+        return new TestCasesListPage(driver);
+    }
+
+    public ConfimationModalPage clickOnDeletePermanentlyBtn() {
+        deletePermanentlyBtn.click();
+        return this;
+    }
+
+    public TestCasesListPage clickOnDeletePermanentlySecondPage() {
+        deletePermanentlySecondPage.click();
+        return new TestCasesListPage(driver);
     }
 }
