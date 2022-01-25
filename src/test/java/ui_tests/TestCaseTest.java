@@ -11,6 +11,7 @@ public class TestCaseTest extends BaseTest {
             description = "Create a test case filling out all and only required fields and asserting success message",
             groups = {"Smoke", "Positive", "Regression"})
     public void createPositiveTestCaseTest(TestCase testCase) {
+        loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         testCaseSteps.addTestCase(testCase);
         Assert.assertEquals(caseDetailsPage.getConfirmationMessageAddCaseBtn(), TEST_CASE_SUCCESS_MSG);
         Assert.assertEquals(caseDetailsPage.getTestCaseTitle(), testCase.getTitle());
@@ -39,7 +40,7 @@ public class TestCaseTest extends BaseTest {
     public void openTestCaseAndClickCancelBtnTest() {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         testCaseSteps.openTestCasePageAndClickCancel();
-        Assert.assertTrue(testCasesListPage.isTestCaseListTitleVisible());
+        Assert.assertTrue(testCasesOverviewPage.isTestCaseListTitleVisible());
     }
 
     @Test(description = "Edit test case by changing its title", groups = {"Smoke", "Positive", "Regression"})
@@ -47,8 +48,8 @@ public class TestCaseTest extends BaseTest {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
         editTestCaseSteps.editTestCaseAndSave(10, "New title");
         reviewChangesPage.clickOkBtn();
-        Assert.assertTrue(testCasesListPage.isUpdateSuccessMsgVisible());
-        Assert.assertEquals(testCasesListPage.getTitleByIndex(10), "New title");
+        Assert.assertTrue(testCasesOverviewPage.isUpdateSuccessMsgVisible());
+        Assert.assertEquals(testCasesOverviewPage.getTitleByIndex(10), "New title");
     }
 
     @Test(description = "Ensure modal page is opened when saving changes", groups = "Regression")
@@ -69,21 +70,21 @@ public class TestCaseTest extends BaseTest {
     @Test(description = "Delete test case by index clicking on Mark as Deleted button", groups = {"Smoke", "Positive", "Regression"})
     public void deleteTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
-        int testCaseNumberBeforeDelete = testCasesListPage.getTestCasesNumber();
+        int testCaseNumberBeforeDelete = testCasesOverviewPage.getTestCasesNumber();
         testCaseSteps.deleteCertainTestCase(20);
-        confimationModalPage.clickOnMarkAsDeletedBtn();
-        int testCaseNumberAfterDelete = testCasesListPage.getTestCasesNumber();
+        confirmationTestCaseModalPage.clickOnMarkAsDeletedBtn();
+        int testCaseNumberAfterDelete = testCasesOverviewPage.getTestCasesNumber();
         Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
     }
 
     @Test(description = "Delete test case by index clicking on Delete permanently button", groups = {"Smoke", "Positive", "Regression"})
     public void deleteTestPermanentlyTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
-        int testCaseNumberBeforeDelete = testCasesListPage.getTestCasesNumber();
+        int testCaseNumberBeforeDelete = testCasesOverviewPage.getTestCasesNumber();
         testCaseSteps.deleteCertainTestCase(20);
-        confimationModalPage.clickOnDeletePermanentlyBtn();
-        confimationModalPage.clickOnDeletePermanentlySecondPage();
-        int testCaseNumberAfterDelete = testCasesListPage.getTestCasesNumber();
+        confirmationTestCaseModalPage.clickOnDeletePermanentlyBtn();
+        confirmationTestCaseModalPage.clickOnDeletePermanentlySecondPage();
+        int testCaseNumberAfterDelete = testCasesOverviewPage.getTestCasesNumber();
         Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
     }
 }

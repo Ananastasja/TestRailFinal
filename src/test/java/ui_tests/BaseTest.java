@@ -23,8 +23,8 @@ public class BaseTest implements ITestConstantsUI {
     HeaderPage headerPage;
     CaseDetailsPage caseDetailsPage;
     TestCasePage testCasePage;
-    TestCasesListPage testCasesListPage;
-    ConfimationModalPage confimationModalPage;
+    TestCasesOverviewPage testCasesOverviewPage;
+    ConfirmationTestCaseModalPage confirmationTestCaseModalPage;
     EditTestCasePage editTestCasePage;
     ReviewChangesPage reviewChangesPage;
     TestCaseSteps testCaseSteps;
@@ -45,8 +45,8 @@ public class BaseTest implements ITestConstantsUI {
         headerPage = new HeaderPage(driver);
         caseDetailsPage = new CaseDetailsPage(driver);
         testCasePage = new TestCasePage(driver);
-        testCasesListPage = new TestCasesListPage(driver);
-        confimationModalPage = new ConfimationModalPage(driver);
+        testCasesOverviewPage = new TestCasesOverviewPage(driver);
+        confirmationTestCaseModalPage = new ConfirmationTestCaseModalPage(driver);
         editTestCasePage = new EditTestCasePage(driver);
         reviewChangesPage = new ReviewChangesPage(driver);
         testCaseSteps = new TestCaseSteps(driver);

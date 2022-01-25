@@ -20,9 +20,9 @@ public class ReviewChangesPage extends HeaderPage {
         return reviewChangesPageTitle.isDisplayed();
     }
 
-    public TestCasesListPage clickOkBtn() {
+    public TestCasesOverviewPage clickOkBtn() {
         Waiters.waitForElementLocated(driver, okBtn, 10);
         okBtn.click();
-        return new TestCasesListPage(driver);
+        return new TestCasesOverviewPage(driver);
     }
 }
