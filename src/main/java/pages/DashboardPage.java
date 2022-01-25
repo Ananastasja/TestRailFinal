@@ -34,8 +34,8 @@ public class DashboardPage extends HeaderPage{
         return numberOfProjects.getText();
     }
 
-    public TestCasesListPage clickOnTestCasesLink() {
+    public TestCasesOverviewPage clickOnTestCasesLink() {
         testCasesLink.click();
-        return new TestCasesListPage(driver);
+        return new TestCasesOverviewPage(driver);
     }
 }

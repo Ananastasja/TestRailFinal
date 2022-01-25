@@ -8,8 +8,8 @@ import util.Waiters;
 
 import java.util.List;
 
-public class TestCasesListPage extends HeaderPage{
-    public TestCasesListPage(WebDriver driver) {
+public class TestCasesOverviewPage extends HeaderPage{
+    public TestCasesOverviewPage(WebDriver driver) {
         super(driver);
     }
 
@@ -46,7 +46,7 @@ public class TestCasesListPage extends HeaderPage{
         return testCases;
     }
 
-    public TestCasesListPage chooseCaseCheckboxByIndex(int index) {
+    public TestCasesOverviewPage chooseCaseCheckboxByIndex(int index) {
         getCasesList().get(index).click();
         return this;
     }
@@ -70,7 +70,7 @@ public class TestCasesListPage extends HeaderPage{
         //вызвать в тесте два рада - до и после удаления - сверить что не равны
     }
 
-    public TestCasesListPage clickEditDropDown() {
+    public TestCasesOverviewPage clickEditDropDown() {
         editCaseBtn.click();
         return this;
     }
