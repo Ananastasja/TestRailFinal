@@ -64,5 +64,4 @@ public class TestCasePage extends HeaderPage {
         cancelCaseBtn.click();
         return new CaseDetailsPage(driver);
     }
-
 }

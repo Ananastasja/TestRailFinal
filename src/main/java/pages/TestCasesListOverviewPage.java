@@ -8,8 +8,8 @@ import util.Waiters;
 
 import java.util.List;
 
-public class TestCasesOverviewPage extends HeaderPage{
-    public TestCasesOverviewPage(WebDriver driver) {
+public class TestCasesListOverviewPage extends HeaderPage{
+    public TestCasesListOverviewPage(WebDriver driver) {
         super(driver);
     }
 
@@ -46,7 +46,7 @@ public class TestCasesOverviewPage extends HeaderPage{
         return testCases;
     }
 
-    public TestCasesOverviewPage chooseCaseCheckboxByIndex(int index) {
+    public TestCasesListOverviewPage chooseCaseCheckboxByIndex(int index) {
         getCasesList().get(index).click();
         return this;
     }
@@ -61,16 +61,17 @@ public class TestCasesOverviewPage extends HeaderPage{
         return getCasesTitleList().get(index).getText();
     }
 
-    public void clickDeleteCaseBtn() {
+
+    public ConfirmationTestCaseModalPage clickDeleteCaseBtn() {
         deleteCasesBtn.click();
+        return new ConfirmationTestCaseModalPage(driver);
     }
 
     public int getTestCasesNumber() {
         return testCases.size();
-        //вызвать в тесте два рада - до и после удаления - сверить что не равны
     }
 
-    public TestCasesOverviewPage clickEditDropDown() {
+    public TestCasesListOverviewPage clickEditDropDown() {
         editCaseBtn.click();
         return this;
     }
@@ -83,6 +84,4 @@ public class TestCasesOverviewPage extends HeaderPage{
     public boolean isUpdateSuccessMsgVisible() {
         return updateSuccessMessage.isDisplayed();
     }
-
-
 }

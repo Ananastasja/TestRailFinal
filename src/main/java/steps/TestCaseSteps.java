@@ -5,20 +5,20 @@ import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.TestCasePage;
-import pages.TestCasesOverviewPage;
+import pages.TestCasesListOverviewPage;
 
 public class TestCaseSteps {
 
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
     public TestCasePage testCasePage;
-    TestCasesOverviewPage testCasesOverviewPage;
+    TestCasesListOverviewPage testCasesListOverviewPage;
 
     public TestCaseSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         testCasePage = new TestCasePage(driver);
-        testCasesOverviewPage = new TestCasesOverviewPage(driver);
+        testCasesListOverviewPage = new TestCasesListOverviewPage(driver);
     }
 
     public TestCaseSteps addTestCase(TestCase testCase) {
@@ -53,8 +53,8 @@ public class TestCaseSteps {
     }
 
     public TestCaseSteps deleteCertainTestCase(int index) {
-        testCasesOverviewPage.chooseCaseCheckboxByIndex(index);
-        testCasesOverviewPage.clickDeleteCaseBtn();
+        testCasesListOverviewPage.chooseCaseCheckboxByIndex(index)
+                .clickDeleteCaseBtn();
         return this;
     }
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import util.Waiters;
 
+import java.util.List;
+
 public class DashboardPage extends HeaderPage{
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -18,6 +20,8 @@ public class DashboardPage extends HeaderPage{
     WebElement numberOfProjects;
     @FindBy(xpath = "//a[contains(text(), 'Test Cases')]")
     WebElement testCasesLink;
+    @FindBy(xpath = "//div[contains(@class,'summary-title')]/a")
+    List<WebElement> projectsList;
 
     public boolean isDashboardVisible() {
         Waiters.waitForElementLocated(driver, naviDashboard, 5);
@@ -34,8 +38,18 @@ public class DashboardPage extends HeaderPage{
         return numberOfProjects.getText();
     }
 
-    public TestCasesOverviewPage clickOnTestCasesLink() {
+    public TestCasesListOverviewPage clickOnTestCasesLink() {
         testCasesLink.click();
-        return new TestCasesOverviewPage(driver);
+        return new TestCasesListOverviewPage(driver);
+    }
+
+    public List<WebElement> getProjectsList() {
+        return projectsList;
+    }
+
+    public ProjectDetailsPage chooseProjectByIndex(int index) {
+        Waiters.waitForElementLocated(driver, projectsList, 10);
+        getProjectsList().get(index).click();
+        return new ProjectDetailsPage(driver);
     }
 }

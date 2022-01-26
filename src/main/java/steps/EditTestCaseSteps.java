@@ -8,19 +8,19 @@ public class EditTestCaseSteps {
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
     public TestCasePage testCasePage;
-    TestCasesOverviewPage testCasesOverviewPage;
+    TestCasesListOverviewPage testCasesListOverviewPage;
     EditTestCasePage editTestCasePage;
 
     public EditTestCaseSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         testCasePage = new TestCasePage(driver);
-        testCasesOverviewPage = new TestCasesOverviewPage(driver);
+        testCasesListOverviewPage = new TestCasesListOverviewPage(driver);
         editTestCasePage = new EditTestCasePage(driver);
     }
 
     public EditTestCaseSteps editTestCaseAndSave(int index, String newTitle) {
-        testCasesOverviewPage.chooseCaseCheckboxByIndex(index)
+        testCasesListOverviewPage.chooseCaseCheckboxByIndex(index)
                 .clickEditDropDown()
                 .clickEditSelected()
                 .changeTitle(newTitle)
@@ -29,7 +29,7 @@ public class EditTestCaseSteps {
     }
 
     public EditTestCaseSteps editTestWithNoFieldsChangesAndClickSave(int index) {
-        testCasesOverviewPage.chooseCaseCheckboxByIndex(index)
+        testCasesListOverviewPage.chooseCaseCheckboxByIndex(index)
                 .clickEditDropDown()
                 .clickEditSelected()
                 .clickSaveBtn();

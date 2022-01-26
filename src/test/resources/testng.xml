@@ -8,8 +8,10 @@
     <test name="Tests" preserve-order="true">
         <classes>
             <class name="ui_tests.LoginTest"/>
-            <class name="api_tests.ProjectTest"></class>
-            <class name="api_tests.SuiteTest"></class>
+            <class name="ui_tests.MilestoneTest"/>
+            <class name="ui_tests.TestCaseTest"/>
+            <class name="api_tests.ProjectTest"/>
+            <class name="api_tests.SuiteTest"/>
         </classes>
     </test>
 </suite>

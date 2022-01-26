@@ -16,9 +16,9 @@ public class ConfirmationTestCaseModalPage extends HeaderPage{
     @FindBy(xpath = "//*[contains(@id, 'casesDeletionConfirmationDialog')]//a[contains(@class,'button-black')]")
     WebElement deletePermanentlySecondPage;
 
-    public TestCasesOverviewPage clickOnMarkAsDeletedBtn() {
+    public TestCasesListOverviewPage clickOnMarkAsDeletedBtn() {
         markAsDeletedBtn.click();
-        return new TestCasesOverviewPage(driver);
+        return new TestCasesListOverviewPage(driver);
     }
 
     public ConfirmationTestCaseModalPage clickOnDeletePermanentlyBtn() {
@@ -26,8 +26,8 @@ public class ConfirmationTestCaseModalPage extends HeaderPage{
         return this;
     }
 
-    public TestCasesOverviewPage clickOnDeletePermanentlySecondPage() {
+    public TestCasesListOverviewPage clickOnDeletePermanentlySecondPage() {
         deletePermanentlySecondPage.click();
-        return new TestCasesOverviewPage(driver);
+        return new TestCasesListOverviewPage(driver);
     }
 }

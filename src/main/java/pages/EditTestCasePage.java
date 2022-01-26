@@ -12,7 +12,6 @@ public class EditTestCasePage extends HeaderPage {
 
     @FindBy(xpath = "//div[contains(@class, 'content-header-title')]")
     WebElement editTestCasePageTitle;
-
     @FindBy(xpath = "//*[@id = 'accept']")
     WebElement saveTestCaseBtn;
     @FindBy(xpath = "//*[contains(text(), 'need to update')]")
