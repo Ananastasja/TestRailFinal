@@ -7,14 +7,14 @@ public class EditTestCaseSteps {
 
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
-    public TestCasePage testCasePage;
+    public CreateTestCasePage createTestCasePage;
     TestCasesListOverviewPage testCasesListOverviewPage;
     EditTestCasePage editTestCasePage;
 
     public EditTestCaseSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
-        testCasePage = new TestCasePage(driver);
+        createTestCasePage = new CreateTestCasePage(driver);
         testCasesListOverviewPage = new TestCasesListOverviewPage(driver);
         editTestCasePage = new EditTestCasePage(driver);
     }

@@ -8,7 +8,7 @@ public class MilestoneSteps {
 
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
-    public TestCasePage testCasePage;
+    public CreateTestCasePage createTestCasePage;
     TestCasesListOverviewPage testCasesListOverviewPage;
     MilestonesListOverviewPage milestonesListOverviewPage;
     ConfirmationMilestoneModalPage confirmationMilestoneModalPage;
@@ -18,7 +18,7 @@ public class MilestoneSteps {
     public MilestoneSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
-        testCasePage = new TestCasePage(driver);
+        createTestCasePage = new CreateTestCasePage(driver);
         testCasesListOverviewPage = new TestCasesListOverviewPage(driver);
         milestonesListOverviewPage = new MilestonesListOverviewPage(driver);
         confirmationMilestoneModalPage = new ConfirmationMilestoneModalPage(driver);
@@ -56,7 +56,7 @@ public class MilestoneSteps {
     }
 
     public MilestoneSteps openStartMilestoneWindow(int index) {
-        milestonesListOverviewPage.openCreatedMilestone(index)
+        milestonesListOverviewPage.openCreatedMilestoneByIndex(index)
                 .clickOnStartMilestoneBtn()
                 .isStartMilestoneWindowDisplayed();
         return this;

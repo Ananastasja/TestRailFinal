@@ -31,8 +31,8 @@ public class MilestoneTest extends BaseTest {
     public void createMilestoneWithEmptyRequiredFieldsTest(Milestone milestone) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         milestoneSteps.createMilestone(milestone, 0, "1", "5");
-        Assert.assertTrue(milestonePage.isErrorMsgDisplayed());
-        Assert.assertTrue(milestonePage.isCreateEditMilestonePageOpened());
+        Assert.assertTrue(createMilestonePage.isErrorMsgDisplayed());
+        Assert.assertTrue(createMilestonePage.isCreateEditMilestonePageOpened());
     }
 
     @Test(description = "Opening Milestone page and clicking Cancel button without filling any fields in, ensuring that project details page is opened",
@@ -40,7 +40,7 @@ public class MilestoneTest extends BaseTest {
     public void openMilestonePageAndCancelItsCreationTest() {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         milestoneSteps.openMilestonePage(3);
-        milestonePage.clickOnCancelBtn();
+        createMilestonePage.clickOnCancelBtn();
         Assert.assertTrue(projectDetailsPage.isProjectChartVisible());
     }
 
@@ -49,10 +49,10 @@ public class MilestoneTest extends BaseTest {
     public void checkEditBtnIsWorkingTest(Milestone milestone) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         milestoneSteps.createMilestone(milestone, 3, "1", "5");
-        milestonesListOverviewPage.openCreatedMilestone(0)
+        milestonesListOverviewPage.openCreatedMilestoneByIndex(0)
                 .clickEditMilestoneBtn();
-        Assert.assertTrue(milestonePage.isCreateEditMilestonePageOpened());
-        Assert.assertFalse(milestonePage.isSaveBtnEnabled());
+        Assert.assertTrue(createMilestonePage.isCreateEditMilestonePageOpened());
+        Assert.assertFalse(createMilestonePage.isSaveBtnEnabled());
     }
 
     @Test(dataProvider = "Create one milestone example positive", dataProviderClass = DataSupplierInfo.class,
@@ -60,10 +60,10 @@ public class MilestoneTest extends BaseTest {
     public void checkSaveBtnEnabledWhenMilestoneEditedTest(Milestone milestone) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         milestoneSteps.createMilestone(milestone, 3, "1", "5");
-        milestonesListOverviewPage.openCreatedMilestone(0)
+        milestonesListOverviewPage.openCreatedMilestoneByIndex(0)
                 .clickEditMilestoneBtn()
                 .editMilestone("New name");
-        Assert.assertTrue(milestonePage.isSaveBtnEnabled());
+        Assert.assertTrue(createMilestonePage.isSaveBtnEnabled());
     }
 
     @Test(dataProvider = "Create one milestone example positive", dataProviderClass = DataSupplierInfo.class,
@@ -71,7 +71,7 @@ public class MilestoneTest extends BaseTest {
     public void editMilestoneTest(Milestone milestone) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         milestoneSteps.createMilestone(milestone, 3, "1", "5");
-        milestonesListOverviewPage.openCreatedMilestone(0)
+        milestonesListOverviewPage.openCreatedMilestoneByIndex(0)
                 .clickEditMilestoneBtn()
                 .editMilestone("New name")
                 .clickOnAddSaveMilestoneBtn();
@@ -139,6 +139,4 @@ public class MilestoneTest extends BaseTest {
         startMilestoneModalPage.clickOnCancelStartMilestoneBtn();
         Assert.assertTrue(milestoneDetailsPage.isMilestoneStartedMsgDisplayed());
     }
-
-    //will add api if I have time
 }

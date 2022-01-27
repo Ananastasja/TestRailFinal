@@ -1,10 +1,13 @@
 package pages;
 
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import util.Waiters;
 
+@Log4j2
 public class MilestoneDetailsPage extends HeaderPage{
     public MilestoneDetailsPage(WebDriver driver) {
         super(driver);
@@ -25,8 +28,11 @@ public class MilestoneDetailsPage extends HeaderPage{
         return milestoneNotStartedMsg.isDisplayed();
     }
 
+    @Step("Clicking on 'Start milestone' button on Milestone details page")
     public StartMilestoneModalPage clickOnStartMilestoneBtn() {
         Waiters.waitForElementLocated(driver, startMilestoneBtn, 10);
+        log.info("Clicking on 'Start milestone' button");
+        log.debug("'Start milestone' button locator is: " + startMilestoneBtn);
         startMilestoneBtn.click();
         return new StartMilestoneModalPage(driver);
     }
@@ -40,8 +46,11 @@ public class MilestoneDetailsPage extends HeaderPage{
         return milestoneSuccessMsg.getText();
     }
 
-    public MilestonePage clickEditMilestoneBtn() {
+    @Step("Clicking on 'Edit milestone' button on Milestone details page")
+    public CreateMilestonePage clickEditMilestoneBtn() {
+        log.info("Clicking on 'Edit milestone' button");
+        log.debug("'Edit milestone' button locator is: " + editMilestoneBtn);
         editMilestoneBtn.click();
-        return new MilestonePage(driver);
+        return new CreateMilestonePage(driver);
     }
 }

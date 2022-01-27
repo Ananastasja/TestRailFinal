@@ -1,6 +1,5 @@
 package util;
 
-
 import io.github.sskorol.core.DataSupplier;
 
 import objects.ui.Milestone;

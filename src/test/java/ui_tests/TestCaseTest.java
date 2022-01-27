@@ -24,7 +24,7 @@ public class TestCaseTest extends BaseTest {
     public void createNegativeTestCaseTest(TestCase testCase) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         testCaseSteps.addTestCase(testCase);
-        Assert.assertEquals(testCasePage.getMessageError(), TEST_CASE_ERROR_MSG);
+        Assert.assertEquals(createTestCasePage.getMessageError(), TEST_CASE_ERROR_MSG);
     }
 
     @Test(dataProvider = "Test case positive", dataProviderClass = DataSupplierInfo.class,
@@ -33,7 +33,7 @@ public class TestCaseTest extends BaseTest {
     public void createTestCaseAndAddNewTest(TestCase testCase) {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         testCaseSteps.addTestCaseAndAddNewOne(testCase);
-        Assert.assertEquals(testCasePage.getConfirmationMessageAddAndNextBtn(), TEST_CASE_ADD_AND_NEXT_SUCCESS_MSG);
+        Assert.assertEquals(createTestCasePage.getConfirmationMessageAddAndNextBtn(), TEST_CASE_ADD_AND_NEXT_SUCCESS_MSG);
     }
 
     @Test(description = "Open test case page and click Cancel btn. Ensure that you are redirected to Test Cases List page", groups = {"Smoke", "Positive", "Regression"})
@@ -59,7 +59,7 @@ public class TestCaseTest extends BaseTest {
         Assert.assertTrue(reviewChangesPage.isReviewChangesPageDisplayed());
     }
 
-    @Test(description = "Save edit test page without any changes done", groups = {"Negative", "Regression"})
+    @Test(description = "Save edited test case without any changes done", groups = {"Negative", "Regression"})
     public void editTestCaseNegativeTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
         editTestCaseSteps.editTestWithNoFieldsChangesAndClickSave(10);
