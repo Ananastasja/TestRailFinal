@@ -86,7 +86,7 @@ public class MilestoneTest extends BaseTest {
         milestoneSteps.createMilestone(milestone, 3, "1", "5");
         milestoneSteps.deleteTillModalWindow(0);
         Assert.assertTrue(confirmationMilestoneModalPage.isConfirmationModalPageVisible());
-        Assert.assertFalse(confirmationMilestoneModalPage.isDeleteBtnEnabled());
+        Assert.assertFalse(confirmationMilestoneModalPage.isCheckboxSelected());
     }
 
     @Test(dataProvider = "Create one milestone example positive", dataProviderClass = DataSupplierInfo.class,
@@ -105,9 +105,9 @@ public class MilestoneTest extends BaseTest {
         milestoneSteps.createMilestone(milestone, 3, "1", "5");
         int milestonesNumberBeforeDelete = milestonesListOverviewPage.getMilestonesSize();
         milestoneSteps.deleteMilestone(0);
-        milestonesListOverviewPage.waitForMilestonesListDisplayed();
+        confirmationMilestoneModalPage.waitTillModalWindowNotVisible();
         int milestonesNumberAfterDelete = milestonesListOverviewPage.getMilestonesSize();
-        Assert.assertFalse(milestonesNumberBeforeDelete == milestonesNumberAfterDelete);
+        Assert.assertNotEquals(milestonesNumberAfterDelete, milestonesNumberBeforeDelete);
     }
 
     @Test(dataProvider = "Create one milestone example positive", dataProviderClass = DataSupplierInfo.class,

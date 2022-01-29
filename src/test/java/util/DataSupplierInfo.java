@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class DataSupplierInfo {
 
     @DataSupplier(name = "Test case positive")
-    public Stream<TestCase> createPositiveTestCase() {
+    public static Stream<TestCase> createPositiveTestCase() {
         return Stream.of(
                 new TestCase("This is title", "Test Case", "Test Case (Text)", "Regression",
                         "High", "2", "No", " None", "These are preconditions", "These are steps",
@@ -20,7 +20,7 @@ public class DataSupplierInfo {
     }
 
     @DataSupplier(name = "Test case negative")
-    public Stream<TestCase> createNegativeTestCase() {
+    public static Stream<TestCase> createNegativeTestCase() {
         return Stream.of(
                 new TestCase("", "", "", "",
                         "", "", "", "", "", "",
@@ -31,7 +31,7 @@ public class DataSupplierInfo {
     }
 
     @DataSupplier(name = "Test case edit positive")
-    public Stream<TestCase> editTestCaseData() {
+    public static Stream<TestCase> editTestCaseData() {
         return Stream.of(
                 new TestCase("New title", "", "", "",
                         "", "", "", "", "", "",
@@ -42,20 +42,20 @@ public class DataSupplierInfo {
     }
 
     @DataSupplier(name = "Create milestone positive")
-    public Stream<Milestone> createMilestone() {
+    public static Stream<Milestone> createMilestone() {
         return Stream.of(
                 new Milestone("Name", "Reference", "Description"),
                 new Milestone("Milestone name", "", ""));
     }
 
     @DataSupplier(name = "Create one milestone example positive")
-    public Milestone createOneMilestone() {
+    public static Milestone createOneMilestone() {
         return
                 new Milestone("Name", "Reference", "Description");
     }
 
     @DataSupplier(name = "Create milestone negative")
-    public Stream<Milestone> createMilestoneWithRequiredFieldsEmpty() {
+    public static Stream<Milestone> createMilestoneWithRequiredFieldsEmpty() {
         return Stream.of(
                 new Milestone("", "", ""),
                 new Milestone("", "Ref", "Description"));

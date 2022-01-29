@@ -3,6 +3,7 @@ package steps;
 import objects.ui.Milestone;
 import org.openqa.selenium.WebDriver;
 import pages.*;
+import util.Waiters;
 
 public class MilestoneSteps {
 

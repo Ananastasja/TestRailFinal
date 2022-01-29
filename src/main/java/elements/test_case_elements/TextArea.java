@@ -17,6 +17,7 @@ public class TextArea extends Base {
 
     public void writeText(String text) {
         Waiters.waitForElementLocated(driver, driver.findElement(By.xpath(String.format(TEXT_AREA_XPATH, label))), 10);
+        log.info(String.format("Send keys to text area: '%s' with text: '%s'", label, text));
         log.debug("Text area locator is: " + TEXT_AREA_XPATH);
         driver.findElement(By.xpath(String.format(TEXT_AREA_XPATH, label))).sendKeys(text);
     }

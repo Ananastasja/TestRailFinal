@@ -4,7 +4,7 @@ import util.PropertyReader;
 
 public interface IBaseConstantsAPI {
 
-    String BASE_URL_API = "https://ananastasjaa.testrail.io/index.php?/api/v2/";
+    String BASE_URL_API = "https://aanastasja.testrail.io/index.php?/api/v2/";
     String ADD_PROJECT_URL = "add_project";
     String DELETE_PROJECT_URL = "delete_project/%d";
     String UPDATE_PROJECT_API = "update_project/%d";

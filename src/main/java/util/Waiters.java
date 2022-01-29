@@ -2,6 +2,7 @@ package util;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,5 +29,11 @@ public class Waiters {
         log.debug("Waiter's timeout is: " + timeout + " for elements: " + elements);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
+    public static void waitForElementNotLocated(WebDriver driver, WebElement element, int timeout) {
+        log.debug("Waiter's timeout is: " + timeout + " for elements: " + element);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.invisibilityOf(element));
     }
 }

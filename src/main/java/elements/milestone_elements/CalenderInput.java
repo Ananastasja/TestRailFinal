@@ -19,8 +19,10 @@ public class CalenderInput extends Base {
 
     public void clickOnCalender(String date) {
         Waiters.waitForElementLocated(driver, driver.findElement(By.xpath(String.format(CALENDER_INPUT_XPATH, label))), 10);
+        log.info(String.format("Click on calender: '%s'", label));
         log.debug("Calender locator is: " + CALENDER_INPUT_XPATH);
         driver.findElement(By.xpath(String.format(CALENDER_INPUT_XPATH, label))).click();
+        log.info(String.format("Choose date: '%s'", date));
         log.debug("Date locator is: " + DATE_XPATH);
         Waiters.waitForElementLocated(driver, driver.findElement(By.xpath(String.format(DATE_XPATH, date))), 10);
         driver.findElement(By.xpath(String.format(DATE_XPATH, date))).click();

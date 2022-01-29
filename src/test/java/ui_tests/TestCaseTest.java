@@ -46,23 +46,23 @@ public class TestCaseTest extends BaseTest {
     @Test(description = "Edit test case by changing its title", groups = {"Smoke", "Positive", "Regression"})
     public void editTestCasePositiveTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
-        editTestCaseSteps.editTestCaseAndSave(10, "New title");
+        editTestCaseSteps.editTestCaseAndSave(1, "New title");
         reviewChangesPage.clickOkBtn();
         Assert.assertTrue(testCasesListOverviewPage.isUpdateSuccessMsgVisible());
-        Assert.assertEquals(testCasesListOverviewPage.getTitleByIndex(10), "New title");
+        Assert.assertEquals(testCasesListOverviewPage.getTitleByIndex(1), "New title");
     }
 
     @Test(description = "Ensure modal page is opened when saving changes", groups = "Regression")
     public void reviewChangesModalOpensTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
-        editTestCaseSteps.editTestCaseAndSave(10, "New title");
+        editTestCaseSteps.editTestCaseAndSave(1, "New title");
         Assert.assertTrue(reviewChangesPage.isReviewChangesPageDisplayed());
     }
 
     @Test(description = "Save edited test case without any changes done", groups = {"Negative", "Regression"})
     public void editTestCaseNegativeTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
-        editTestCaseSteps.editTestWithNoFieldsChangesAndClickSave(10);
+        editTestCaseSteps.editTestWithNoFieldsChangesAndClickSave(1);
         Assert.assertTrue(editTestCasePage.isErrorMessageDisplayed());
         Assert.assertTrue(editTestCasePage.isTitleVisible());
     }
@@ -71,7 +71,7 @@ public class TestCaseTest extends BaseTest {
     public void deleteTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
         int testCaseNumberBeforeDelete = testCasesListOverviewPage.getTestCasesNumber();
-        testCaseSteps.deleteCertainTestCase(20);
+        testCaseSteps.deleteCertainTestCase(1);
         confirmationTestCaseModalPage.clickOnMarkAsDeletedBtn();
         int testCaseNumberAfterDelete = testCasesListOverviewPage.getTestCasesNumber();
         Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
@@ -81,7 +81,7 @@ public class TestCaseTest extends BaseTest {
     public void deleteTestPermanentlyTest() {
         testCaseSteps.loginAndOpenTestCasesListPage(EMAIL_UI, PASSWORD_UI);
         int testCaseNumberBeforeDelete = testCasesListOverviewPage.getTestCasesNumber();
-        testCaseSteps.deleteCertainTestCase(20);
+        testCaseSteps.deleteCertainTestCase(1);
         confirmationTestCaseModalPage.clickOnDeletePermanentlyBtn();
         confirmationTestCaseModalPage.clickOnDeletePermanentlySecondPage();
         int testCaseNumberAfterDelete = testCasesListOverviewPage.getTestCasesNumber();

@@ -35,10 +35,6 @@ public class MilestonesListOverviewPage extends HeaderPage {
     @FindBys(@FindBy(xpath = "//div[contains(@class, 'summary-title')]/a"))
     List<WebElement> milestoneNamesList;
 
-    public void waitForMilestonesListDisplayed() {
-        Waiters.waitForElementLocated(driver, milestonesList, 10);
-    }
-
     public List<WebElement> getMilestoneNamesList() {
         return milestoneNamesList;
     }

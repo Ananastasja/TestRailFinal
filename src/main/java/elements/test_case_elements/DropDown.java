@@ -16,8 +16,10 @@ public class DropDown extends Base {
     public static final String DROP_DOWN_OPTION_XPATH = "//li[contains(text(),'%s')]";
 
     public void selectOption(String option) {
+        log.info(String.format("Click on dropdown: '%s'", label));
         log.debug("Dropdown locator is: " + DROP_DOWN_FIELD_XPATH);
         driver.findElement(By.xpath(String.format(DROP_DOWN_FIELD_XPATH, label))).click();
+        log.info(String.format("Choose option: '%s'", option));
         log.debug("Dropdown option locator is: " + DROP_DOWN_OPTION_XPATH);
         driver.findElement(By.xpath(String.format(DROP_DOWN_OPTION_XPATH, option))).click();
     }

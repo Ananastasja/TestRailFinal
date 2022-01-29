@@ -8,14 +8,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import pages.*;
 import steps.EditTestCaseSteps;
 import steps.LoginSteps;
 import steps.MilestoneSteps;
 import steps.TestCaseSteps;
+import util.Retry;
 import util.TestListener;
 
 @Listeners(TestListener.class)
@@ -23,10 +26,10 @@ import util.TestListener;
 public class BaseTest implements ITestConstantsUI {
 
     WebDriver driver;
-    protected LoginPage loginPage;
-    protected DashboardPage dashboardPage;
-    protected LoginSteps loginSteps;
-    HeaderPage headerPage;
+    public LoginPage loginPage;
+    public DashboardPage dashboardPage;
+    public LoginSteps loginSteps;
+    public HeaderPage headerPage;
     CaseDetailsPage caseDetailsPage;
     CreateTestCasePage createTestCasePage;
     TestCasesListOverviewPage testCasesListOverviewPage;
@@ -43,7 +46,14 @@ public class BaseTest implements ITestConstantsUI {
     ConfirmationMilestoneModalPage confirmationMilestoneModalPage;
     StartMilestoneModalPage startMilestoneModalPage;
 
-    @BeforeMethod
+    @BeforeSuite(alwaysRun = true)
+    public void beforeSuite(ITestContext context) {
+        for (ITestNGMethod method : context.getAllTestMethods()) {
+            method.setRetryAnalyzer(new Retry());
+        }
+    }
+
+    @BeforeMethod(alwaysRun = true)
     public void initTest(ITestContext iTestContext) {
         initBrowser();
         driver.manage().window().maximize();
@@ -77,7 +87,7 @@ public class BaseTest implements ITestConstantsUI {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
             } catch (Exception e) {
-                log.fatal("FATAL ERROR: Driver os not started");
+                log.fatal("FATAL ERROR: Driver is not started");
             }
         }
     }

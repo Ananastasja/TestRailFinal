@@ -15,6 +15,7 @@ public class AddButton extends Base {
     public static final String ADD_BTN_XPATH = "//div[contains(@class, 'button-group')]//*[contains(text(), '%s')]";
 
     public void clickOnAddBtn() {
+        log.info(String.format("Click on button: '%s'", label));
         log.debug("Button locator is: " + ADD_BTN_XPATH);
         driver.findElement(By.xpath(String.format(ADD_BTN_XPATH, label))).click();
     }

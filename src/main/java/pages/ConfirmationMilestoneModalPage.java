@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import util.Waiters;
 
 @Log4j2
 public class ConfirmationMilestoneModalPage extends HeaderPage{
@@ -19,6 +20,10 @@ public class ConfirmationMilestoneModalPage extends HeaderPage{
     WebElement deleteBtn;
     @FindBy(xpath = "//*[contains(@id,'bulkDeleteDialog')]//a[contains(@class, 'action-close')]")
     WebElement cancelBtn;
+
+    public void waitTillModalWindowNotVisible() {
+        Waiters.waitForElementNotLocated(driver, deleteBtn, 10);
+    }
 
     @Step("Clicking on 'Cancel' button on milestone Modal page")
     public MilestonesListOverviewPage clickCancelBtn() {
@@ -36,8 +41,8 @@ public class ConfirmationMilestoneModalPage extends HeaderPage{
         return new MilestonesListOverviewPage(driver);
     }
 
-    public boolean isDeleteBtnEnabled() {
-        return deleteBtn.isEnabled();
+    public boolean isCheckboxSelected() {
+        return deleteBtn.isSelected();
     }
 
     @Step("Selecting checkbox on milestone Modal page")

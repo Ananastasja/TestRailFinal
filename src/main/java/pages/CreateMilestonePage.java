@@ -60,9 +60,7 @@ public class CreateMilestonePage extends HeaderPage{
 
     @Step("Entering data into name field: '{milestone.name}', reference field: '{milestone.reference}', description area: '{milestone.description}' on Create milestone page")
     public CreateMilestonePage fillOutFields(Milestone milestone) {
-        log.info(String.format("Type text: '%s' into 'Name' field", milestone.getName()));
         new InputField(driver, "name").writeText(milestone.getName());
-        log.info(String.format("Type text: '%s' into 'Reference' field", milestone.getReference()));
         new InputField(driver, "reference").writeText(milestone.getReference());
         log.info(String.format("Type text: '%s' into 'Description' field", milestone.getDescription()));
         log.debug("Locator is: " + milestoneDescription);
@@ -72,7 +70,6 @@ public class CreateMilestonePage extends HeaderPage{
 
     @Step("Choosing start date: '{start}' and end date: '{end}' on Create milestone page")
     public CreateMilestonePage chooseDate(String start, String end) {
-        log.info("Choosing start date: " + start + " end date: " + end + " from calender");
         new CalenderInput(driver, "start_on").clickOnCalender(start);
         new CalenderInput(driver, "due_on").clickOnCalender(end);
         return this;
