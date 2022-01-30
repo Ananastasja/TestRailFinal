@@ -14,6 +14,6 @@ public interface IBaseConstantsAPI {
     String GET_SUITE_API = "get_suite/%d";
     String UPDATE_SUITE_API = "update_suite/%d";
     String GET_ALL_PROJECTS_API = "get_projects";
-    String API_KEY = System.getProperty("key", PropertyReader.getProperty("api.key"));
-    String EMAIL_API = System.getProperty("email", PropertyReader.getProperty("email"));
+    String API_KEY = System.getenv().getOrDefault("key", PropertyReader.getProperty("api.key"));
+    String EMAIL_API = System.getenv().getOrDefault("email", PropertyReader.getProperty("email"));
 }
