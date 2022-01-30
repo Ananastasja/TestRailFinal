@@ -74,7 +74,7 @@ public class TestCaseTest extends BaseTest {
         testCaseSteps.deleteCertainTestCase(1);
         confirmationTestCaseModalPage.clickOnMarkAsDeletedBtn();
         int testCaseNumberAfterDelete = testCasesListOverviewPage.getTestCasesNumber();
-        Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
+        Assert.assertNotEquals(testCaseNumberAfterDelete, testCaseNumberBeforeDelete);
     }
 
     @Test(description = "Delete test case by index clicking on Delete permanently button", groups = {"Smoke", "Positive", "Regression"})
@@ -84,7 +84,8 @@ public class TestCaseTest extends BaseTest {
         testCaseSteps.deleteCertainTestCase(1);
         confirmationTestCaseModalPage.clickOnDeletePermanentlyBtn();
         confirmationTestCaseModalPage.clickOnDeletePermanentlySecondPage();
+        confirmationTestCaseModalPage.waitTillModalWindowNotVisible();
         int testCaseNumberAfterDelete = testCasesListOverviewPage.getTestCasesNumber();
-        Assert.assertFalse(testCaseNumberBeforeDelete == testCaseNumberAfterDelete);
+        Assert.assertNotEquals(testCaseNumberAfterDelete, testCaseNumberBeforeDelete);
     }
 }

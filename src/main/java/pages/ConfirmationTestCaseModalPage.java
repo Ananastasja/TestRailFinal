@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import util.Waiters;
 
 @Log4j2
 public class ConfirmationTestCaseModalPage extends HeaderPage{
@@ -18,6 +19,10 @@ public class ConfirmationTestCaseModalPage extends HeaderPage{
     WebElement deletePermanentlyBtn;
     @FindBy(xpath = "//*[contains(@id, 'casesDeletionConfirmationDialog')]//a[contains(@class,'button-black')]")
     WebElement deletePermanentlySecondPage;
+
+    public void waitTillModalWindowNotVisible() {
+        Waiters.waitForElementNotLocated(driver, deletePermanentlySecondPage, 10);
+    }
 
     @Step("Clicking on 'Mark as deleted' button on test case Modal page")
     public TestCasesListOverviewPage clickOnMarkAsDeletedBtn() {
