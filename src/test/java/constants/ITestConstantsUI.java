@@ -13,4 +13,9 @@ public interface ITestConstantsUI {
     String TEST_CASE_SUCCESS_MSG = "Successfully added the new test case. Add another";
     String TEST_CASE_ERROR_MSG = "Field Title is a required field.";
     String TEST_CASE_ADD_AND_NEXT_SUCCESS_MSG = "Successfully added the new test case. View test case";
+    String MILESTONE_ADDED_MSG = "Successfully added the new milestone.";
+    String MILESTONE_STARTED_MSG = "Successfully started the milestone.";
+    String MILESTONE_DELETED_MSG = "Successfully added the new milestone.";
+    String MILESTONE_EDITED_MSG = "Successfully updated the milestone.";
+    String MILESTONE_PERCENT_TEXT = "0%";
 }

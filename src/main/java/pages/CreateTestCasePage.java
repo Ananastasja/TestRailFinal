@@ -4,13 +4,16 @@ import elements.test_case_elements.AddButton;
 import elements.test_case_elements.DropDown;
 import elements.test_case_elements.InputField;
 import elements.test_case_elements.TextArea;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import objects.ui.TestCase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TestCasePage extends HeaderPage {
-    public TestCasePage(WebDriver driver) {
+@Log4j2
+public class CreateTestCasePage extends HeaderPage {
+    public CreateTestCasePage(WebDriver driver) {
         super(driver);
     }
 
@@ -27,7 +30,10 @@ public class TestCasePage extends HeaderPage {
     @FindBy(xpath = "//a[contains(@class, 'case-form-cancel')]")
     WebElement cancelCaseBtn;
 
-    public TestCasePage fillAllTestCaseFields(TestCase testCase) {
+    @Step("Enter data into fields title: '{testCase.title}', section: '{testCase.section}', template: '{testCase.template}', type: '{testCase.type}'," +
+            "priority: '{testCase.priority}', estimate: '{testCase.estimate}', references: '{testCase.references}', automation type: '{testCase.automationType}'," +
+            "preconditions: '{testCase.preconditions}', steps: '{testCase.steps}', expected result: '{testCase.expectedResult}' on Create test case Page")
+    public CreateTestCasePage fillAllTestCaseFields(TestCase testCase) {
         new InputField(driver, "title").writeText(testCase.getTitle());
         new DropDown(driver, "Section").selectOption(testCase.getSection());
         new DropDown(driver, "Template").selectOption(testCase.getTemplate());
@@ -42,12 +48,14 @@ public class TestCasePage extends HeaderPage {
         return this;
     }
 
+    @Step("Clicking on 'Add test case' button on Create test case Page")
     public CaseDetailsPage clickAddTestCaseBtn() {
         new AddButton(driver, "Add Test Case").clickOnAddBtn();
         return new CaseDetailsPage(driver);
     }
 
-    public TestCasePage clickAddAndNextBtn() {
+    @Step("Click on 'Add&New' button on Create test case Page")
+    public CreateTestCasePage clickAddAndNextBtn() {
         new AddButton(driver, "Add & Next").clickOnAddBtn();
         return this;
     }
@@ -60,9 +68,11 @@ public class TestCasePage extends HeaderPage {
         return confirmationMessage.getText();
     }
 
+    @Step("Click on 'Cancel' button on Create test case Page")
     public CaseDetailsPage clickCancelCaseBtn() {
+        log.info("Click on 'Cancel' button");
+        log.debug("'Cancel' button locator is: " + cancelCaseBtn);
         cancelCaseBtn.click();
         return new CaseDetailsPage(driver);
     }
-
 }

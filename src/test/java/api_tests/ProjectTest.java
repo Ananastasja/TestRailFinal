@@ -13,11 +13,10 @@ public class ProjectTest extends BaseTest {
 
     @Test(description = "Creating project via API", groups = {"Smoke", "Positive", "Regression"})
     public void createProjectTest() {
-        loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
         ResponseBody createdProject = new ProjectAdapter().createProject(ObjectsData.projectData);
         String nameFromApi = createdProject.path("name");
         int idFromApi = createdProject.path("id");
-        Assert.assertEquals(nameFromApi, dashboardPage.getLastProjectName());
+        Assert.assertEquals(nameFromApi, ObjectsData.projectData.getName());
         Assert.assertTrue(idFromApi > 0);
     }
 

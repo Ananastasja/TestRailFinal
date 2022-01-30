@@ -45,14 +45,14 @@ public class SuiteTest extends BaseTest {
 
     @Test(description = "Get all IDs of all test suites and ensure they all are > 0", groups = {"Positive", "Regression"})
     public void getAllSuitesTest() {
-        List<Suite> suites = new SuiteAdapter().getAllSuitesList(76);
+        List<Suite> suites = new SuiteAdapter().getAllSuitesList(1);
         suites.forEach(x -> Assert.assertTrue(x.getId() > 0));
     }
 
     @Test(description = "Get the size of all test suites of a certain project and compare with expected size", groups = {"Positive", "Regression"})
     public void getAllSuitesAndGetSize() {
         loginSteps.loginAndClickLoginBtn(EMAIL_UI, PASSWORD_UI);
-        Response response = new SuiteAdapter().getAllSuites(76);
+        Response response = new SuiteAdapter().getAllSuites(1);
         int suitesSize = response.body().path("suites.size");
         Assert.assertEquals(suitesSize, 3);
     }

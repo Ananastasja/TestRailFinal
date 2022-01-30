@@ -2,6 +2,7 @@ package ui_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import util.Retry;
 
 public class LoginTest extends BaseTest{
 
