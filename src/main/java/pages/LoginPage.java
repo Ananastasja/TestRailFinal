@@ -23,6 +23,8 @@ public class LoginPage extends BasePage {
     WebElement errorText;
     @FindBy(xpath = "//*[contains(@class, 'login-text')]")
     WebElement loginBoxText;
+    @FindBy(xpath = "//*[contains(@class,'loginpage-message')]")
+    WebElement missingRequiredFieldText;
 
     @Step("Entering email: '{email}' and password: '{password}' on Login page")
     public LoginPage enterLoginCreds(String email, String password) {
@@ -33,6 +35,10 @@ public class LoginPage extends BasePage {
         log.debug("'Password' field locator is: " + passwordInput);
         passwordInput.sendKeys(password);
         return this;
+    }
+
+    public String getMissingRequiredFieldText() {
+        return missingRequiredFieldText.getText();
     }
 
     @Step("Clicking on 'Login' button on Login page")

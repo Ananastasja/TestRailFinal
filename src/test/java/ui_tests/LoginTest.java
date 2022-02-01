@@ -2,7 +2,6 @@ package ui_tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import util.Retry;
 
 public class LoginTest extends BaseTest{
 
@@ -16,6 +15,18 @@ public class LoginTest extends BaseTest{
     public void loginWithInvalidCredsTest() {
         loginSteps.loginAndClickLoginBtn(INVALID_EMAIL, INVALID_PASSWORD);
         Assert.assertEquals(loginPage.getErrorText(), ERROR_MESSAGE_LOGIN);
+    }
+
+    @Test(description = "Login only with email", groups = {"Regression", "Negative"})
+    public void loginWithEmailTest() {
+        loginSteps.loginAndClickLoginBtn(EMAIL_UI, "");
+        Assert.assertEquals(loginPage.getMissingRequiredFieldText(), MISSING_PASSWORD_TEXT);
+    }
+
+    @Test(description = "Login only with password", groups = {"Regression", "Negative"})
+    public void loginWithPasswordTest() {
+        loginSteps.loginAndClickLoginBtn(" ", PASSWORD_UI);
+        Assert.assertEquals(loginPage.getMissingRequiredFieldText(), MISSING_EMAIL_TEXT);
     }
 
     @Test(description = "Login and log out from Dashboard page", groups = {"Smoke", "Regression", "Positive"})

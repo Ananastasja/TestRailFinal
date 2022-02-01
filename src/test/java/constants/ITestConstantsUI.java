@@ -8,6 +8,8 @@ public interface ITestConstantsUI {
     String LOGIN_BOX_TEXT = "Log into Your Account";
     String INVALID_EMAIL = "hello";
     String INVALID_PASSWORD = "world";
+    String MISSING_PASSWORD_TEXT = "Password is required.";
+    String MISSING_EMAIL_TEXT = "Email/Login is required.";
     String EMAIL_UI = System.getenv().getOrDefault("email", PropertyReader.getProperty("email"));
     String PASSWORD_UI = System.getenv().getOrDefault("password", PropertyReader.getProperty("password"));
     String TEST_CASE_SUCCESS_MSG = "Successfully added the new test case. Add another";
