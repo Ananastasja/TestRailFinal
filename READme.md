@@ -1,4 +1,4 @@
-##**TestRail.io Automation Framework**
+## **TestRail.io Automation Framework**
 ![Screenshot](https://testmatick.com/wp-content/uploads/2019/11/Logotip-TestRail.png)
 ______
 **TestRail is a web-based test case management tool. It is used by testers, developers and team leads to manage, track, and organize software testing efforts.**
