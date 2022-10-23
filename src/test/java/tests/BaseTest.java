@@ -32,6 +32,7 @@ public class BaseTest implements ITestConstantsUI {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        initPage();
     }
 
     public void initPage() {
