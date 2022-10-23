@@ -7,14 +7,14 @@ import pages.LoginPage;
 
 public class LoginSteps {
 
-    private LoginPage loginPage;
-    private DashboardPage dashboardPage;
-    private HeaderPage headerPage;
-    WebDriver driver;
+    public LoginPage loginPage;
+    public DashboardPage dashboardPage;
+    public HeaderPage headerPage;
 
     public LoginSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
+        headerPage = new HeaderPage(driver);
     }
 
     public LoginSteps loginAndClickLoginBtn(String email, String password) {
